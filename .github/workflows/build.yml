@@ -44,7 +44,7 @@ jobs:
       - name: Mostrar localização do artefato gerado
         run: |
           echo "Arquivos gerados:"
-          find target -type f \( -name "*.jar" -o\)
+          find target -type f \( -name "*.jar" -o -name "*.war" \)
 
       - name: Build da imagem Docker
         uses: docker/build-push-action@v5
