@@ -9,7 +9,7 @@ jobs:
   build:
    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/reusable-build.yml@main
    with:
-     java-version: "17"
-     maven-version: "3.8.6"
+    java_version: '17'
+    maven_version: '3.8.6'  
    secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
