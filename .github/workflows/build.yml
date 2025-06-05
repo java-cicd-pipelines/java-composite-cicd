@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  # 1: Build - tests
+  # 1: Build - tests ##
   build:
    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/reusable-build.yml@main
    with:
