@@ -1,54 +1,15 @@
-name: Java CI Pipeline
-
 on:
-    workflow_dispatch:
-    push:
-        branches:
-            - main
-            - develop
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
+  # 1: Build - tests
   build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-
-      - name: Configurar JDK 17
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Instalar Maven
-        uses: stCarolas/setup-maven@v4
-        with:
-          maven-version: '3.9.6'
-
-      - name: Executar testes (unitários e integração)
-        run: mvn clean verify
-
-      - name: Análise com SonarQube
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          mvn sonar:sonar \
-            -Dsonar.projectKey=java-cicd-devops \
-            -Dsonar.organization=java-cicd-pipelines \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.login=$SONAR_TOKEN
-
-      - name: Build do projeto (gera JAR)
-        run: mvn package
-
-      - name: Mostrar localização do artefato gerado
-        run: |
-          echo "Arquivos gerados:"
-          find target -type f \( -name "*.jar" -o -name "*.war" \)
-
-      - name: Build da imagem Docker
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: ./Dockerfile
-          push: false
+    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/reusable-build.yml@main
+    with:
+     java-version: "17"
+     maven-version: "3.8.6"
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
