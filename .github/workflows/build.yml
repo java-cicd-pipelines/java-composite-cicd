@@ -13,3 +13,11 @@ jobs:
     maven_version: '3.8.6'  
    secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+  #2: Deploy
+  needs: build
+  deploy:
+   uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/package-deploy.yml@main
+   secrets:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     
