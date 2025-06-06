@@ -12,7 +12,7 @@ permissions:
 jobs:
   # 1: Build - tests ##
   build:
-   uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/reusable-build.yml@main
+   uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/build-pipeline.yml@main
    with:
     java_version: '17'
     maven_version: '3.8.6'  
