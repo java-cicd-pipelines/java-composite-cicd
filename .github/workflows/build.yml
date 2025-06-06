@@ -19,9 +19,12 @@ jobs:
    secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  #2: Deploy
+  #2: Deploy to GitHub Packages ##
   deploy:
    needs: build
    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/package-deploy.yml@main
 
- 
+  #3: Deploy to Docker ##
+  deploy-docker:
+   needs: deploy
+   uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/docker-deploy.yml@main
