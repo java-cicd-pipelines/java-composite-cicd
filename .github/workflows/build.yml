@@ -20,5 +20,4 @@ jobs:
   deploy:
    needs: build
    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/package-deploy.yml@main
-   secrets:
-      GH_PACKAGES_TOKEN: ${{ secrets.AUTH_PACKAGEJ_TOKEN }}
+ 
