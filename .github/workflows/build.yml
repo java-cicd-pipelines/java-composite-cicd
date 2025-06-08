@@ -28,5 +28,4 @@ jobs:
   deploy-docker:
    needs: deploy
    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/docker-deploy.yml@main
-   secrets:
-      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+   
