@@ -29,3 +29,14 @@ jobs:
    needs: deploy
    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/docker-deploy.yml@main
    
+   #4 Deploy to Azure
+   deploy-azure:
+   needs: deploy-docker
+   uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/azure-deploy.yml@main
+   with:
+    AZURE_ACR_LOGIN: ${{ secrets.AZURE_ACR_LOGIN }}
+    AZURE_ACR_PASS: ${{ secrets.AZURE_ACR_PASS }}
+    AZURE_ACR_URL: ${{ secrets.AZURE_ACR_URL }}
+    AZURE_RG: ${{ secrets.AZURE_RESOURCE_GROUP }}
+    AZURE_APPSERVICE: ${{ secrets.AZURE_APP_SERVICE }}
+   
