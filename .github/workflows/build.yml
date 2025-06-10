@@ -34,4 +34,5 @@ jobs:
       AZURE_ACR_LOGIN: ${{ secrets.AZURE_ACR_LOGIN }}
       AZURE_ACR_PASS: ${{ secrets.AZURE_ACR_PASS }}
       AZURE_ACR_URL: ${{ secrets.AZURE_ACR_URL }}
+      AZURE_APPSERVICE: ${{ secrets.AZURE_APP_SERVICE}}
       
