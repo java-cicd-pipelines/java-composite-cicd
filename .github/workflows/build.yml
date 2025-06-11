@@ -26,9 +26,4 @@ jobs:
    needs: deploy
    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/docker-deploy.yml@main
    
-   #4 Deploy to Azure
-  deploy-azure:
-   needs: deploy-docker
-   uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/azure-deploy.yml@main
- 
-      
+  
