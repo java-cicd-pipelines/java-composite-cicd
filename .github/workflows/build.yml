@@ -23,7 +23,7 @@ jobs:
 
   #3: Deploy to Docker ##
   deploy-docker:
-   needs: deploy
+   needs: build
    uses: java-cicd-pipelines/java-reusable-pipelines/.github/workflows/docker-deploy.yml@main
    
   
